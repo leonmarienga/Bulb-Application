@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">bulb</string>
+    <string name="switch1">Turn On</string>
+    <string name="switch2">Turn Off</string>
+</resources>
