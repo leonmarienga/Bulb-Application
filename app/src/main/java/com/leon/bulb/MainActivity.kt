@@ -42,21 +42,26 @@ fun BulbApp() {
 
 @Composable
 fun BulbWithButtonAndImage(modifier: Modifier = Modifier) {
-    var result by remember { mutableStateOf( 1) }
-    var prime = result%2
-    val imageResource = when(prime) {
-        1 -> R.drawable.off
-        else -> R.drawable.on
+    var result by remember { mutableStateOf( true) }
+
+    val imageResource = if(result == true) {
+     R.drawable.off}
+        else { R.drawable.on
     }
 
-    val stringR = when(prime) {
-        1 -> R.string.switch1
-        else -> R.string.switch2
+    val stringR = if(result == true) {
+        R.string.switch1}
+        else {R.string.switch2
     }
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
         Image(painter = painterResource(imageResource), contentDescription = result.toString())
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = { result = result + 1 }) {
+
+        Button(onClick = { if(result == false ){
+            result = true
+        }else{
+            result = false
+        } }) {
             Text(text = stringResource(stringR), fontSize = 24.sp)
         }
     }
